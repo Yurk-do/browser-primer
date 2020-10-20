@@ -1,6 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-console */
-
 const browserTree = {
   label: "Window",
   children: [
@@ -72,7 +69,50 @@ const browserTree = {
 
 // рекурсия
 
-const nodesHierarchy = {};
+const nodesHierarchy = {
+  label: "Event Target",
+  children: [
+    {
+      label: "Node",
+      children: [
+        {
+          label: "Text",
+          children: [],
+        },
+        {
+          label: "Comment",
+          children: [],
+        },
+        {
+          label: "Element",
+          children: [
+            {
+              label: "SVGElement",
+              children: [],
+            },
+            {
+              label: "HTMLElement",
+              children: [
+                {
+                  label: "HTMLInputElement",
+                  children: [],
+                },
+                {
+                  label: "HTMLBodyElement",
+                  children: [],
+                },
+                {
+                  label: "HTMLAnchorElement",
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
 
 function renderTree(tree) {
   const rootUlElement = document.createElement("ul");
