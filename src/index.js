@@ -67,8 +67,6 @@ const browserTree = {
   ],
 };
 
-// рекурсия
-
 const nodesHierarchy = {
   label: "Event Target",
   children: [
@@ -116,9 +114,23 @@ const nodesHierarchy = {
 
 function renderTree(tree) {
   const rootUlElement = document.createElement("ul");
+  (function render() {
+    const { label, children } = tree;
+    const childUl = document.createElement("ul");
+    const rootLiElement = document.createElement("li");
+    rootLiElement.innerHTML = label;
+    rootUlElement.appendChild(rootLiElement);
+    rootUlElement.appendChild(childUl);
+    if (children.length > 0) {
+      for (let i = 0; i < children.length; i += 1) {
+        childUl.appendChild(rootLiElement);
+        tree = children[i];
+        render();
+      }
+    }
 
-  // conver tree into elements
-
+    return rootUlElement;
+  })();
   return rootUlElement;
 }
 
