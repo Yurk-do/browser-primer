@@ -207,7 +207,7 @@ function flattenTree(tree) {
   result.push(label);
   if (children.length > 0) {
     for (let i = 0; i < children.length; i += 1) {
-      result.push(flattenTree(children[i]));
+      result.push(...flattenTree(children[i]));
     }
   }
   return result;
